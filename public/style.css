@@ -1,0 +1,11 @@
+.banner {
+    width: 100%;
+}
+
+#h1 {
+    color: rgb(196, 171, 30);
+}
+
+#h1:hover {
+    color: #83af31;
+}
