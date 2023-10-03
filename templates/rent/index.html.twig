@@ -1,0 +1,34 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+	<h1>Liste des locations</h1>
+
+	<div class="accordion col-10 mt-5" id="accordionExample">
+		{% for type, rentsArray in rents %}
+			<div class="accordion-item">
+				<h2 class="accordion-header">
+					<button class="accordion-button {% if loop.first %}show{% endif %}" type="button" data-bs-toggle="collapse" data-bs-target="#accordeon{{ type }}" aria-expanded="true" aria-controls="accordeon{{ type }}">
+						{{ type }}
+					</button>
+				</h2>
+				<div id="accordeon{{ type }}" class="accordion-collapse collapse {% if loop.first %}show{% endif %}" data-bs-parent="#accordionExample">
+					<div class="accordion-body">
+						{% for rents in rentsArray %}
+							<div class="d-flex justify-content-between align-items-center border m-1">
+								<h4 class="m-3">{{ rents.label }}</h4>
+								<div>
+									<a href="{{ path('app_rent_show', {'id':rents.id}) }}" class="btn btn-info m-3">Voir la location</a>
+								</div>
+							</div>
+
+						{% endfor %}
+
+					</div>
+				</div>
+			</div>
+
+		{% endfor %}
+	</div>
+
+
+{% endblock %}

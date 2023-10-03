@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+	<h1>Ajouter un locataire</h1>
+
+	{{ include('user/locataire/_form.html.twig') }}
+
+	<a class="btn btn-info m-2" href="{{ path('app_locataire_index') }}">Retour à la liste</a>
+{% endblock %}

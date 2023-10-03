@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+	<h1>Ajouter un propriétaire</h1>
+
+	{{ include('user/proprietaire/_form.html.twig') }}
+
+	<a class="btn btn-info m-2" href="{{ path('app_proprietaire_index') }}">Retour à la liste</a>
+{% endblock %}

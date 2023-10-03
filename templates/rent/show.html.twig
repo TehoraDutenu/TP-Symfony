@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+	<h1>Location</h1>
+
+	<table class="table">
+		<tbody>
+			<tr>
+				<th>Id</th>
+				<td>{{ rent.id }}</td>
+			</tr>
+			<tr>
+				<th>Nom</th>
+				<td>{{ rent.label }}</td>
+			</tr>
+			<tr>
+				<th>Type de bien</th>
+				<td>{{ typeRent.imagePath }}</td>
+			</tr>
+			<tr>
+				<th>Prix par nuitée</th>
+				<td>{{ typeRent.price }}</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<a class="btn btn-info m-2" href="{{ path('app_rent_index') }}">Retour à la liste</a>
+
+	<a class="btn btn-warning m-2" href="{{ path('app_rent_edit', {'id': user.id}) }}">Modifier</a>
+
+	{{ include('user/admin/_delete_form.html.twig') }}
+{% endblock %}

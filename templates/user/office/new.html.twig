@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+	<h1>Ajouter un administratif</h1>
+
+	{{ include('user/office/_form.html.twig') }}
+
+	<a class="btn btn-info m-2" href="{{ path('app_office_index') }}">Retour à la liste</a>
+{% endblock %}

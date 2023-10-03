@@ -21,28 +21,43 @@ class RentRepository extends ServiceEntityRepository
         parent::__construct($registry, Rent::class);
     }
 
-//    /**
-//     * @return Rent[] Returns an array of Rent objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('r')
-//            ->andWhere('r.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('r.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    public function getRentByType(array $types)
+    {
+        $entityManager = $this->getEntityManager();
+        foreach ($types as $type) {
+            $query = $entityManager->createQuery(
+                'SELECT r
+                FROM App\Entity\Rent r
+                WHERE r.typeRent = :type'
+            )->setParameter('type', $type);
 
-//    public function findOneBySomeField($value): ?Rent
-//    {
-//        return $this->createQueryBuilder('r')
-//            ->andWhere('r.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+            $rents[$type->getLabel()] = $query->getResult();
+        }
+        return $rents;
+    }
+
+    //    /**
+    //     * @return Rent[] Returns an array of Rent objects
+    //     */
+    //    public function findByExampleField($value): array
+    //    {
+    //        return $this->createQueryBuilder('r')
+    //            ->andWhere('r.exampleField = :val')
+    //            ->setParameter('val', $value)
+    //            ->orderBy('r.id', 'ASC')
+    //            ->setMaxResults(10)
+    //            ->getQuery()
+    //            ->getResult()
+    //        ;
+    //    }
+
+    //    public function findOneBySomeField($value): ?Rent
+    //    {
+    //        return $this->createQueryBuilder('r')
+    //            ->andWhere('r.exampleField = :val')
+    //            ->setParameter('val', $value)
+    //            ->getQuery()
+    //            ->getOneOrNullResult()
+    //        ;
+    //    }
 }

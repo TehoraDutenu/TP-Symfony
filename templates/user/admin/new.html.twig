@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+	<h1>Create new User</h1>
+
+	{{ include('user/admin/_form.html.twig') }}
+
+	<a class="btn btn-info m-2" href="{{ path('app_admin_index') }}">Retour à la liste</a>
+{% endblock %}

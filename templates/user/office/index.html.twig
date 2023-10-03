@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<h1>Administratifs</h1>
+
+	<a class="btn btn-success m-2" href="{{ path('app_office_new') }}">Ajouter</a>
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Email</th>
+				<th>Nom</th>
+				<th>Prénom</th>
+				<th>Adresse</th>
+				<th>Téléphone</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for user in offices %}
+				<tr>
+					<td>{{ user.id }}</td>
+					<td>{{ user.email }}</td>
+					<td>{{ user.userInfo.firstname }}</td>
+					<td>{{ user.userInfo.lastname }}</td>
+					<td>{{ user.userInfo.address }},
+						{{ user.userInfo.zipCode }},
+						{{ user.userInfo.city }},
+						{{ user.userInfo.country }}
+					</td>
+					<td>
+						<a class="btn btn-info m-2" href="{{ path('app_office_show', {'id': user.id}) }}">Voir</a>
+						<a class="btn btn-warning m-2" href="{{ path('app_office_edit', {'id': user.id}) }}">Modifier</a>
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="5">no records found</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+	<a class="btn btn-success m-2" href="{{ path('app_office_new') }}">Ajouter</a>
+{% endblock %}
